@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrienteeringApi", "OrienteeringApi.csproj", "{309DD120-769E-44A9-8D94-DACF389EDFC3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeedingConsole", "..\SeedingConsole\SeedingConsole.csproj", "{626BD2F1-9BA3-4454-81D5-91A7F9C3C01B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{309DD120-769E-44A9-8D94-DACF389EDFC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{309DD120-769E-44A9-8D94-DACF389EDFC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{309DD120-769E-44A9-8D94-DACF389EDFC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{309DD120-769E-44A9-8D94-DACF389EDFC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{626BD2F1-9BA3-4454-81D5-91A7F9C3C01B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{626BD2F1-9BA3-4454-81D5-91A7F9C3C01B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{626BD2F1-9BA3-4454-81D5-91A7F9C3C01B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{626BD2F1-9BA3-4454-81D5-91A7F9C3C01B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {655D2FDA-2E39-4B3A-99E0-0EBB847720AD}
+	EndGlobalSection
+EndGlobal
