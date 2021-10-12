@@ -21,7 +21,7 @@ namespace OrienteeringApi.Models
         //public string Answer { get; set; }
 
         //public string Question { get; set; }
-        public DateTime Created { get; set; }
-        public DateTime Modified { get; set; }
+        //public DateTime Created { get; set; }
+        //public DateTime Modified { get; set; }
     }
 }

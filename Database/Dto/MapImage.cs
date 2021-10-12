@@ -7,25 +7,26 @@ using System.Threading.Tasks;
 
 namespace OrienteeringApi.Database
 {
-    public class QA
+
+    public class MapImage
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [Required]
-        public string Question { get; set; }
+        public int SchoolId { get; set; }
+        public School School { get; set; }
 
         [Required]
-        public string Answer { get; set; }
+        public string Image { get; set; }
 
-        public int LessonSubjectId { get; set; }
-
-        public LessonSubject LessonSubject { get; set; }
-
-        public virtual List<LessonControl> LessonControls { get; set; } = new List<LessonControl>();
+        [Required]
+        [StringLength(100)]
+        public string Title { get; set; }
+        public string Description { get; set; }
         public DateTime Created { get; set; }
         public DateTime Modified { get; set; }
-
+        public List<Map> Maps { get; set; } = new List<Map>();
     }
 }

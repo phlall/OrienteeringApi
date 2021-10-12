@@ -18,7 +18,7 @@ namespace OrienteeringApi.Database
         [Required]
         [StringLength(200)]
         public string Name { get; set; }
-        public List<Map> Maps { get; set; }
+        public virtual List<LessonGroup> LessonGroups { get; set; } = new List<LessonGroup>();
         public string  Address { get; set; }
         [Required]
         [StringLength(50)]

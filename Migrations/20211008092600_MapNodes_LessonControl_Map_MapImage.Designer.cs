@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using OrienteeringApi.Database;
@@ -9,9 +10,10 @@ using OrienteeringApi.Database;
 namespace OrienteeringApi.Migrations
 {
     [DbContext(typeof(OrienteeringContext))]
-    partial class OrienteeringContextModelSnapshot : ModelSnapshot
+    [Migration("20211008092600_MapNodes_LessonControl_Map_MapImage")]
+    partial class MapNodes_LessonControl_Map_MapImage
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -263,7 +265,7 @@ namespace OrienteeringApi.Migrations
 
                     b.HasIndex("MapImageId");
 
-                    b.ToTable("Maps");
+                    b.ToTable("Map");
                 });
 
             modelBuilder.Entity("OrienteeringApi.Database.MapImage", b =>
@@ -314,6 +316,9 @@ namespace OrienteeringApi.Migrations
                     b.Property<int>("MapId")
                         .HasColumnType("integer");
 
+                    b.Property<int?>("SchoolId")
+                        .HasColumnType("integer");
+
                     b.Property<int>("XPos")
                         .HasColumnType("integer");
 
@@ -324,7 +329,9 @@ namespace OrienteeringApi.Migrations
 
                     b.HasIndex("MapId");
 
-                    b.ToTable("MapNodes");
+                    b.HasIndex("SchoolId");
+
+                    b.ToTable("MapNode");
                 });
 
             modelBuilder.Entity("OrienteeringApi.Database.Pupil", b =>
@@ -543,7 +550,7 @@ namespace OrienteeringApi.Migrations
                         .IsRequired();
 
                     b.HasOne("OrienteeringApi.Database.School", "School")
-                        .WithMany("LessonGroups")
+                        .WithMany()
                         .HasForeignKey("SchoolId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -630,6 +637,10 @@ namespace OrienteeringApi.Migrations
                         .HasForeignKey("MapId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("OrienteeringApi.Database.School", null)
+                        .WithMany("Maps")
+                        .HasForeignKey("SchoolId");
 
                     b.Navigation("Map");
                 });
@@ -742,7 +753,7 @@ namespace OrienteeringApi.Migrations
 
             modelBuilder.Entity("OrienteeringApi.Database.School", b =>
                 {
-                    b.Navigation("LessonGroups");
+                    b.Navigation("Maps");
 
                     b.Navigation("Pupils");
 

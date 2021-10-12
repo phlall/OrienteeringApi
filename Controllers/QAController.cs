@@ -17,9 +17,9 @@ namespace OrienteeringApi.Controllers
         private readonly IOrienteeringRepository _repository;
         private readonly IQaRepository _qaRepository;
         private readonly IMapper _mapper;
-        public QAController(IMapper mapper, IOrienteeringRepository repo, IQaRepository qaRepo)
+        public QAController(IMapper mapper, IQaRepository qaRepo)
         {
-            _repository = repo;
+           // _repository = repo;
             _qaRepository = qaRepo;
             _mapper = mapper;
 
@@ -41,10 +41,18 @@ namespace OrienteeringApi.Controllers
 
         }
 
+        [HttpGet]
+        [Route("GetBySubject/{id}")]
+        public async Task<ActionResult<QAModel[]>> GetBySubject(int id)
+        {
+            var controlLessons = await _qaRepository.GetBySubject(id);
+            var ctrls = _mapper.Map<QAModel[]>(controlLessons);
+            return ctrls;
+        }
+
         [HttpPost]
         public async Task<ActionResult<QAModel>> Post(QAModel qa)
         {
-
             try
             {
                 LessonSubject subject = await _qaRepository.GetLessonSubjectByName(qa.LessonSubject);
@@ -56,7 +64,7 @@ namespace OrienteeringApi.Controllers
                         _qaRepository.Create(newQA);
                         if (await _qaRepository.SaveChanges())
                         {
-                            return CreatedAtAction("Get", new { id = newQA }, qa);
+                            return CreatedAtAction("Get", new { id = newQA.Id }, qa);
                         }
                     }
                 }
@@ -66,7 +74,6 @@ namespace OrienteeringApi.Controllers
                 return this.StatusCode(StatusCodes.Status500InternalServerError, "Database Failure");
             }
             return BadRequest();
-
         }
     }
 }

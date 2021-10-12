@@ -17,6 +17,8 @@ namespace OrienteeringApi.Database
         public DbSet<LessonControl> LessonControls { get; set; }
         public DbSet<Map> Maps { get; set; }
         public DbSet<QA> QAs { get; set; }
+        public DbSet<MapNode> MapNodes { get; set; }
+        public DbSet<MapImage> MapImages { get; set; }
         public DbSet<LessonGroupSession> LessonGroupSessions { get; set; }
         public DbSet<LessonSubject> LessonSubjects { get; set; }
         public DbSet<School> Schools { get; set; }

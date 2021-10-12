@@ -129,8 +129,21 @@ namespace OrienteeringApi.Database
                 }
                 await context.SaveChangesAsync();
                 return true;
-            } catch (Exception) {
-                return false;
+            } catch (Exception ex) {
+                throw ex;
+            }
+        }
+
+        public async Task<bool> Save()
+        {
+            try
+            {
+                await context.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
 

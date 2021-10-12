@@ -19,7 +19,13 @@ namespace OrienteeringApi.Models
 
         public int SchoolId { get; set; }
 
-        public int MapId { get; set; }
+        public MapModel Map { get; set; }
+
+        //public int MapId { get; set; }
+
+        //public string MapTitle { get; set; }
+
+        //public string MapDescription { get; set; }
 
         public bool Shared { get; set; }
 

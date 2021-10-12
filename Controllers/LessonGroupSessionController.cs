@@ -38,8 +38,8 @@ namespace OrienteeringApi.Controllers
             }
         }
 
-        [HttpPost("{id}")]
-        public async Task<ActionResult<LessonGroupSessionModel>> Post(int id)
+        [HttpPost("{id}/{teacherId}")]
+        public async Task<ActionResult<LessonGroupSessionModel>> Post(int id, int teacherId)
         {
             try
             {
@@ -47,7 +47,7 @@ namespace OrienteeringApi.Controllers
                 //var group = _mapper.Map<LessonGroup>(groupModel);
                 if (group != null)
                 {
-                    var newSession = new LessonGroupSession { LessonGroupId = group.Id, Completed = default};
+                    var newSession = new LessonGroupSession { LessonGroupId = group.Id, TeacherId = teacherId, Completed = default};
                     group.LessonGroupSessions.Add(newSession);
                    // _repository.Create(newSession);
                     if (await _repository.SaveChanges())

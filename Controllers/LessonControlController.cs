@@ -44,8 +44,8 @@ namespace OrienteeringApi.Controllers
         public async Task<IActionResult> Put(LessonControlModel model)
         {
             var controlLesson = await _repository.GetControlLessonById(model.Id);
-            controlLesson.XPos = model.XPos;
-            controlLesson.YPos = model.YPos;
+           // controlLesson.XPos = model.XPos;
+           // controlLesson.YPos = model.YPos;
            // var ctrls = _mapper.Map<LessonControlModel>(controlLessons);
             _repository.Update(controlLesson);
             if (await _repository.SaveChangesAsync())
@@ -61,12 +61,14 @@ namespace OrienteeringApi.Controllers
             List<LessonControl> lessonControls = await _repository.GetLessonControlsBylessonId(id);
             if (lessonControls.Any())
             {
-                lessonControls.ForEach(c => { c.XPos = 0; c.YPos = 0; });
 
-                if (await _repository.SaveChangesAsync())
-                {
-                    return NoContent();
-                }
+                // FIX THIS FOR NEW DB STRUCTURE
+                //lessonControls.ForEach(c => { c.XPos = 0; c.YPos = 0; });
+
+                //if (await _repository.SaveChangesAsync())
+                //{
+                //    return NoContent();
+                //}
             }
             return NotFound();
         }

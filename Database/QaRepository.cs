@@ -26,5 +26,10 @@ namespace OrienteeringApi.Database
         {
             return await _context.LessonSubjects.FirstOrDefaultAsync(x => x.Id == id);
         }
+
+        public async Task<QA[]> GetBySubject(int id)
+        {
+            return await _context.QAs.Where(x => x.LessonSubjectId == id).ToArrayAsync();
+        }
     }
 }

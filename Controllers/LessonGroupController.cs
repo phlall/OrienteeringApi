@@ -38,7 +38,7 @@ namespace OrienteeringApi.Controllers
         public async Task<ActionResult<LessonGroupModel[]>> GetBySchool(int id)
         {
            // var groups = await _repository.GetLessonGroupsBySchoolId(id);
-            var groups = await _repository.Get(x => x.SchoolId == id, includeProperties: "LessonGroupSessions,LessonSubject");
+            var groups = await _repository.Get(x => x.SchoolId == id, includeProperties: "LessonSubject,LessonGroupSessions,Map");
             var mapped = _mapper.Map<LessonGroupModel[]>(groups);
             return Ok(mapped);
             //return mapped;
@@ -75,9 +75,10 @@ namespace OrienteeringApi.Controllers
                     foreach (var question in subjectQuestions)
                     {
                         // LessonControl lc = new LessonControl { LessonGroupId = group.Id, QAId = question.Id };
-                        group.LessonControls.Add(new LessonControl { LessonGroupId = group.Id, QAId = question.Id, XPos = 0, YPos = 0 });
+                        // *** FIX THIS FOR NEW DB STRUCTURE ***
+                        //group.LessonControls.Add(new LessonControl { LessonGroupId = group.Id, QAId = question.Id, XPos = 0, YPos = 0 });
                     }
-                     _repository.Create(group);
+                    _repository.Create(group);
                     if (await _repository.SaveChanges())
                     {
                         groupModel.Id = group.Id;
@@ -93,46 +94,49 @@ namespace OrienteeringApi.Controllers
 
         }
 
-        //[HttpPost]
-        //[Route("PostLessonGroup")]
-        //public async Task<ActionResult<LessonGroupModel>> PostLessonGroup(LessonGroupModel groupModel)
-        //{
+        [HttpPost]
+        [Route("CreateLessonGroup")]
+        public async Task<ActionResult<LessonGroupModel>> CreateLessonGroup(LessonGroupModel groupModel)
+        {
 
-        //    try
-        //    {
-        //        var group = _mapper.Map<LessonGroup>(groupModel);
-        //        if( group != null)
-        //        {
-        //           await _repository.Create(group);
-        //            if (await _repository.SaveChanges())
-        //            {
-        //                var newLessonGroupId = group.Id;
-        //                var subjectQuestions = await _qaRepository.GetQuestions(group.LessonSubjectId);
-        //                if (subjectQuestions != null && subjectQuestions.Count > 0)
-        //                {
-        //                    foreach (var question in subjectQuestions)
-        //                    {
-        //                        LessonControl lc = new LessonControl { LessonGroupId = group.Id, QAId = question.Id };
-        //                        _repository.Add(lc);
-        //                    }
-        //                    if (await _repository.SaveChanges())
-        //                    {
-        //                        groupModel.Id = newLessonGroupId;
-        //                        return CreatedAtAction("Get", new { id = newLessonGroupId }, groupModel);
-        //                    }
-        //                }
-        //                //groupModel.Id = group.Id;
-        //                //return CreatedAtAction("Get", new { id = groupModel.Id }, groupModel);
-        //            }
+            try
+            {
+               // var QAs = _qaRepository.GetQuestions(groupModel.LessonSubjectId);
+               // var controls = _mapper.Map<LessonControl[]>(groupModel.LessonControls).ToList();
+                var group = _mapper.Map<LessonGroup>(groupModel);
+                if (group != null)
+                {
+                  //  group.LessonControls = controls;
+                    _repository.Create(group);
+                    if (await _repository.SaveChanges())
+                    {
+                        //var newLessonGroupId = group.Id;
+                        //var subjectQuestions = await _qaRepository.GetQuestions(group.LessonSubjectId);
+                        //if (subjectQuestions != null && subjectQuestions.Count > 0)
+                        //{
+                        //    foreach (var question in subjectQuestions)
+                        //    {
+                        //        LessonControl lc = new LessonControl { LessonGroupId = group.Id, QAId = question.Id };
+                        //        _repository.Add(lc);
+                        //    }
+                        //    if (await _repository.SaveChanges())
+                        //    {
+                        //        groupModel.Id = newLessonGroupId;
+                        //        return CreatedAtAction("Get", new { id = newLessonGroupId }, groupModel);
+                        //    }
+                       // }
+                    groupModel.Id = group.Id;
+                    return CreatedAtAction("Get", new { id = groupModel.Id }, groupModel);
+                }
 
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return this.StatusCode(StatusCodes.Status500InternalServerError, "Database Failure");
-        //    }
-        //    return BadRequest();
+                }
+            }
+            catch (Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Database Failure");
+            }
+            return BadRequest();
 
-        //}
+        }
     }
 }

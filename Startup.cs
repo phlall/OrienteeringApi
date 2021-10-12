@@ -42,6 +42,8 @@ namespace OrienteeringApi
             services.AddScoped<IQaRepository, QaRepository>();
             services.AddScoped<ISubjectRepository, SubjectRepository>();
             services.AddScoped<ISchoolRepository, SchoolRepository>();
+            services.AddScoped<IMapRepository, MapRepository>();
+            services.AddScoped<IMapImageRepository, MapImageRepository>();
             services.AddAutoMapper(typeof(Startup));
             services.AddDbContext<OrienteeringContext>(options =>
          options.UseNpgsql(Configuration.GetConnectionString("OrienteeringConnection")));

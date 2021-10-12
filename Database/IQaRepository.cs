@@ -12,5 +12,7 @@ namespace OrienteeringApi.Database
         Task<LessonSubject> GetLessonSubjectByName(string subject);
 
         Task<LessonSubject> GetLessonSubject(int id);
+
+        Task<QA[]> GetBySubject(int id);
     }
 }

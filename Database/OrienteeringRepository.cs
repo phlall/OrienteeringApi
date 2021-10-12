@@ -61,15 +61,15 @@ namespace OrienteeringApi.Database
         {
             return await _context.LessonSubjects.ToArrayAsync();
         }
-        public async Task<Map[]> GetMaps()
-        {
-            return await _context.Maps.ToArrayAsync();
-        }
+        //public async Task<MapNode[]> GetMaps()
+        //{
+        //    return await _context.Maps.ToArrayAsync();
+        //}
 
-        public async Task<Map> GetMap(int id)
-        {
-            return await _context.Maps.FirstOrDefaultAsync(x => x.Id == id);
-        }
+        //public async Task<MapNode> GetMap(int id)
+        //{
+        //    return await _context.Maps.FirstOrDefaultAsync(x => x.Id == id);
+        //}
 
         public async Task<School> GetSchool(int id)
         {
@@ -79,10 +79,12 @@ namespace OrienteeringApi.Database
         //{
         //    return await _context.QAs.Where(x => x.LessonSubjectId == subjectId).OrderBy(o => o.Question).ToListAsync();
         //}
-        public async Task<Map[]> GetMapsBySchoolId(int schoolId)
-        {
-            return await _context.Maps.Where(x => x.SchoolId == schoolId).ToArrayAsync(); ;
-        }
+        //public async Task<MapNode[]> GetMapsBySchoolId(int schoolId)
+        //{
+        //    // *** FIX THIS FOR NEW DB STRUCTURE ***
+        //    return await _context.Maps.Where(x => x.SchoolId == schoolId).ToArrayAsync(); 
+        //    return null;
+        //}
         //public async Task<LessonSubject> GetLessonSubjectByName(string subject)
         //{
         //    return await _context.LessonSubjects.FirstOrDefaultAsync(x => x.Name == subject);

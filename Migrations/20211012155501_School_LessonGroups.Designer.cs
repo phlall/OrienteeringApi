@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using OrienteeringApi.Database;
@@ -9,9 +10,10 @@ using OrienteeringApi.Database;
 namespace OrienteeringApi.Migrations
 {
     [DbContext(typeof(OrienteeringContext))]
-    partial class OrienteeringContextModelSnapshot : ModelSnapshot
+    [Migration("20211012155501_School_LessonGroups")]
+    partial class School_LessonGroups
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

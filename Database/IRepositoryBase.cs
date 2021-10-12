@@ -43,5 +43,7 @@ namespace OrienteeringApi.Database
         void Delete(object id);
 
         Task<bool> SaveChanges();
+
+        Task<bool> Save();
     }
 }

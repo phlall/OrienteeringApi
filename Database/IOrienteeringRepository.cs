@@ -27,11 +27,11 @@ namespace OrienteeringApi.Database
 
         Task<LessonGroup> AddLessonGroup(LessonGroup group);
         Task<LessonGroupSession[]> getGroupSessions(int id);
-        Task<Map[]> GetMaps();
+        //Task<MapNode[]> GetMaps();
 
-        Task<Map> GetMap(int id);
+        //Task<MapNode> GetMap(int id);
 
-        Task<Map[]> GetMapsBySchoolId(int schoolId);
+        //Task<MapNode[]> GetMapsBySchoolId(int schoolId);
 
         //Task<List<QA>> GetQuestions(int subjectId);
 
@@ -45,5 +45,6 @@ namespace OrienteeringApi.Database
 
         Task<QA[]> GetQAs();
         Task<bool> SaveChangesAsync();
+       
     }
 }

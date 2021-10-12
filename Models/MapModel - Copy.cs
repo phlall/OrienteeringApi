@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace OrienteeringApi.Models
 { 
 
-    public class MapModel
+    public class NewMapModel
     {
         [Key]
         public int Id { get; set; }

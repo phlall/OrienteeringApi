@@ -18,7 +18,7 @@ namespace OrienteeringApi.Database
         public Teacher Teacher { get; set; }
         public List<LessonGroupSessionAnswers> LessonGroupSessionAnswers { get; set; } = new List<LessonGroupSessionAnswers>();
         public DateTime Completed { get; set; }
-        public DateTime Created { get; set; }
-        public DateTime Modified { get; set; }
+        public DateTime Created { get; set; } = DateTime.Now;
+        public DateTime Modified { get; set; } = DateTime.Now;
     }
 }
