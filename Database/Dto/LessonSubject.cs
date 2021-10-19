@@ -18,8 +18,13 @@ namespace OrienteeringApi.Database
 
         [StringLength(200)]
         public string Name { get; set; }
+
         [StringLength(100)]
         public string ThemeImage { get; set; }
+
+        [Required]
+        [StringLength(200)]
+        public string AgeGroup { get; set; }
         public bool IsActive { get; set; }
         public bool IsPremium { get; set; }
         public bool IsShared { get; set; }

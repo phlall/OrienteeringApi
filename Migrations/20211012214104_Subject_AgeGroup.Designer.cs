@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using OrienteeringApi.Database;
@@ -9,9 +10,10 @@ using OrienteeringApi.Database;
 namespace OrienteeringApi.Migrations
 {
     [DbContext(typeof(OrienteeringContext))]
-    partial class OrienteeringContextModelSnapshot : ModelSnapshot
+    [Migration("20211012214104_Subject_AgeGroup")]
+    partial class Subject_AgeGroup
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -255,21 +257,14 @@ namespace OrienteeringApi.Migrations
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<DateTime>("Created")
+                        .HasMaxLength(100)
                         .HasColumnType("timestamp without time zone");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("text");
 
                     b.Property<int>("MapImageId")
                         .HasColumnType("integer");
 
                     b.Property<DateTime>("Modified")
                         .HasColumnType("timestamp without time zone");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
 
                     b.HasKey("Id");
 

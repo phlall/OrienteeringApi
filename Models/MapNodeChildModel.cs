@@ -8,12 +8,9 @@ using System.Threading.Tasks;
 namespace OrienteeringApi.Models
 {
 
-    public class MapNodeModel
+    public class MapNodeChildModel
     {
         public int Id { get; set; }
-        [Required]
-        public int MapId { get; set; }
-        public MapModel Map { get; set; }
 
         public string Description { get; set; }
 
@@ -23,7 +20,7 @@ namespace OrienteeringApi.Models
         [Required]
         public int XPos { get; set; }
 
-        public virtual List<LessonControlModel> LessonControls { get; set; } = new List<LessonControlModel>();
+       // public virtual List<LessonControlModel> LessonControls { get; set; } = new List<LessonControlModel>();
 
     }
 }

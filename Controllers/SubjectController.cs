@@ -60,6 +60,21 @@ namespace OrienteeringApi.Controllers
                 return this.StatusCode(StatusCodes.Status500InternalServerError, "Database Failure /n" + ex.InnerException);
             }
         }
+
+        [HttpGet]
+        [Route("GetByAgeGroup/{agegroup}")]
+        public async Task<ActionResult<LessonSubjectModel>> GetByAgeGroup(string agegroup)
+        {
+            try
+            {
+                var subjects = await _repository.Get(x => x.AgeGroup.Contains(agegroup));
+                return _mapper.Map<LessonSubjectModel>(subjects);
+            }
+            catch (Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Database Failure /n" + ex.InnerException);
+            }
+        }
     }
 }
 

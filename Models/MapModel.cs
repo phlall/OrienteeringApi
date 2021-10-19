@@ -17,14 +17,14 @@ namespace OrienteeringApi.Models
         //public int SchoolId { get; set; }
         //public SchoolModel School { get; set; }
 
-        public MapImageModel MapImage { get; set; }
+        public MapImageChildModel MapImage { get; set; }
         //public string Image { get; set; }
         //public string Title { get; set; }
         public string Description { get; set; }
         public DateTime Created { get; set; }
         public DateTime Modified { get; set; } = DateTime.Now;
 
-        public virtual List<MapNodeModel> MapNodes { get; set; } = new List<MapNodeModel>();
+        public virtual List<MapNodeChildModel> MapNodes { get; set; } = new List<MapNodeChildModel>();
        // public List<LessonGroupModel> LessonGroups { get; set; } = new List<LessonGroupModel>();
     }
 }

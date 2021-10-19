@@ -31,12 +31,11 @@ namespace OrienteeringApi.Controllers
 
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public async Task<ActionResult<MapModel>> Get(int id)
         {
-            var maps = await _repository.GetMap(id);
+            var maps = await _repository.GetSingle(x => x.Id == id, includeProperties: "MapNodes,MapImage");
             return _mapper.Map<MapModel>(maps);
-
         }
 
         [HttpGet]
@@ -45,7 +44,7 @@ namespace OrienteeringApi.Controllers
         {
             try
             {
-                var maps = await _repository.GetMapsBySchoolId(schoolId);
+                var maps = await _repository.Get(x => x.MapImage.SchoolId == schoolId, includeProperties:"MapNodes,MapImage");
                 return _mapper.Map<MapModel[]>(maps);
             }
             catch (Exception ex)
