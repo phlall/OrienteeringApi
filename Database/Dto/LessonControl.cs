@@ -25,7 +25,7 @@ namespace OrienteeringApi.Database
 
         public QA QuestionAnswer { get; set; }
 
-        public DateTime Created { get; set; }
+        public DateTime Created { get; set; } = DateTime.Now;
 
         public DateTime Modified { get; set; }
 

@@ -30,7 +30,8 @@ namespace OrienteeringApi.Mapping
                 .ForMember(x => x.LessonSubject, o => o.MapFrom(x => x.LessonSubject.Name))
                 .ForMember(x => x.LessonGroupSessions, o => o.MapFrom(x => x.LessonGroupSessions.Count()));
             this.CreateMap<LessonGroupSessionModel, LessonGroupSession>().ReverseMap();
-            this.CreateMap<LessonSubjectModel, LessonSubject>().ReverseMap();
+            this.CreateMap<LessonSubjectModel, LessonSubject>();
+            this.CreateMap<LessonSubject, LessonSubjectModel>().ForMember(x => x.LessonGroups, i => i.Ignore()).ForMember(x => x.QAs, i => i.Ignore());
             this.CreateMap<MapModel, Map>();
             //this.CreateMap<Map, MapModel>().ForMember(x => x.MapNodes, i => i.Ignore());
             this.CreateMap<Map, MapModel>();

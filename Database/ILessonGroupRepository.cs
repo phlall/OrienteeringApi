@@ -8,5 +8,6 @@ namespace OrienteeringApi.Database
     public interface ILessonGroupRepository : IRepositoryBase<LessonGroup>
     {
         Task<LessonGroup[]> GetLessonGroupsBySchoolId(int schoolId);
+        Task<LessonGroup> GetLessonGroupFull(int id);
     }
 }

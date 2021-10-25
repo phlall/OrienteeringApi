@@ -63,12 +63,12 @@ namespace OrienteeringApi.Controllers
 
         [HttpGet]
         [Route("GetByAgeGroup/{agegroup}")]
-        public async Task<ActionResult<LessonSubjectModel>> GetByAgeGroup(string agegroup)
+        public async Task<ActionResult<LessonSubjectModel[]>> GetByAgeGroup(string agegroup)
         {
             try
             {
                 var subjects = await _repository.Get(x => x.AgeGroup.Contains(agegroup));
-                return _mapper.Map<LessonSubjectModel>(subjects);
+                return _mapper.Map<LessonSubjectModel[]>(subjects);
             }
             catch (Exception ex)
             {

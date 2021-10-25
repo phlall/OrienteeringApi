@@ -63,6 +63,8 @@ namespace OrienteeringApi.Controllers
                 MapImage mapImage = await _repository.GetByID(model.MapImage.Id);
                 var map = new Map
                 {
+                    Description = model.Description,
+                    Title = model.Title,
                     Created = DateTime.Now,
                     Modified = DateTime.Now,
                     MapNodes = model.MapNodes.Select(node => new MapNode

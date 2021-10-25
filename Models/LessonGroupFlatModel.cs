@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace OrienteeringApi.Models
 {
-    public class LessonGroupModel
+    public class LessonGroupFlatModel
     {
         public int Id { get; set; }
         // public int LessonSubjectId { get; set; }
@@ -45,7 +45,7 @@ namespace OrienteeringApi.Models
 
         public string Conclusion { get; set; }
 
-        public virtual List<LessonControlModel> LessonControls { get; set; } = new List<LessonControlModel>();
+        public virtual List<LessonControlFlatModel> Nodes { get; set; } = new List<LessonControlFlatModel>();
 
         public int LessonGroupSessions { get; set; }
 
